@@ -12,11 +12,13 @@ __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
 
-=pod
+=begin :prelude
 
 =for test_synopsis
 1;
 __END__
+
+=end :prelude
 
 =head1 SYNOPSIS
 
@@ -48,4 +50,3 @@ plan skip_all => "Test::Spelling required for testing POD spelling"
   if $@;
 
 all_pod_files_spelling_ok('lib');
-
