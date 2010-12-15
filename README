@@ -19,6 +19,21 @@ SYNOPSIS
         stopwords = stopwords
         stopwords = wordlist
 
+    or, if you wanted to use my plugin bundle but just override this
+    plugin's configuration:
+
+        [@Filter]
+        -bundle = @MARCEL
+        -remove = PodSpellingTests
+
+        [PodSpellingTests]
+        wordlist = Pod::Wordlist
+        spell_cmd = aspell list
+        stopwords = CPAN
+        stopwords = github
+        stopwords = stopwords
+        stopwords = wordlist
+
 DESCRIPTION
     This is an extension of Dist::Zilla::Plugin::InlineFiles, providing the
     following file:
