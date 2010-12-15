@@ -112,14 +112,14 @@ Defaults to L<Pod::Wordlist::hanekomu>.
 
 =method spell_cmd
 
-If C<spell_cmd> is set then C<set_spell_cmd( your_spell_command );> added to
-the test file to allow.
+If C<spell_cmd> is set then C<set_spell_cmd( your_spell_command );> is added to
+the test file to allow for custom spell check programs.
 
 Defaults to nothing.
 
 =method stopwords
 
-If stopwords is set then C<add_stopwords( <DATA> )> is added to the test file
+If stopwords is set then C<add_stopwords( E<lt>DATAE<gt> )> is added to the test file
 and the words are added after the __DATA__ section.
 
 C<stopwords> can appear multiple times, one word per line.
