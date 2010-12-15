@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+1.103490  2010-12-15 17:12:06 Europe/Vienna
     - added configuration (wordlist, spell_cmd, stopwords) to this plugin
       (thanks harleypig)
 
