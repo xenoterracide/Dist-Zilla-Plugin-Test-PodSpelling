@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::Plugin::PodSpellingTests - Release tests for POD spelling
 
 VERSION
-    version 1.103490
+    version 1.103491
 
 SYNOPSIS
     In "dist.ini":
@@ -48,14 +48,14 @@ METHODS
     Defaults to Pod::Wordlist::hanekomu.
 
   spell_cmd
-    If "spell_cmd" is set then "set_spell_cmd( your_spell_command );" added
-    to the test file to allow.
+    If "spell_cmd" is set then "set_spell_cmd( your_spell_command );" is
+    added to the test file to allow for custom spell check programs.
 
     Defaults to nothing.
 
   stopwords
-    If stopwords is set then "add_stopwords( <DATA" )> is added to the test
-    file and the words are added after the __DATA__ section.
+    If stopwords is set then "add_stopwords( <DATA> )" is added to the test
+    file and the words are added after the "__DATA__" section.
 
     "stopwords" can appear multiple times, one word per line.
 
