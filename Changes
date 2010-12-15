@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - added configuration (wordlist, spell_cmd, stopwords) to this plugin
+      (thanks harleypig)
 
 1.101420  2010-05-22 18:07:04 Europe/Vienna
     - removed weaver.ini since that's handled in Dist::Zilla's [@MARCEL] now
