@@ -30,6 +30,13 @@ around add_file => sub {
     if ($self->spell_cmd) {
         $set_spell_cmd = sprintf "set_spell_cmd('%s');", $self->spell_cmd;
     }
+
+    # automatically add author names to stopwords
+    for (@{ $self->zilla->authors }) {
+        local $_ = $_;    # we don't want to modify $_ in-place
+        s/<.*?>//g;
+        push @{ $self->stopwords }, /(\w{2,})/g;
+    }
     if (@{ $self->stopwords } > 0) {
         $add_stopwords = 'add_stopwords(<DATA>);';
         $stopwords = join "\n", '__DATA__', @{ $self->stopwords };
@@ -96,12 +103,10 @@ configuration:
 
 =head1 DESCRIPTION
 
-This is an extension of L<Dist::Zilla::Plugin::InlineFiles>, providing the
-following file:
+This is an extension of L<Dist::Zilla::Plugin::InlineFiles>, providing
+the following file:
 
   xt/release/pod-spell.t - a standard Test::Spelling test
-
-=head1 ATTRIBUTES
 
 =method wordlist
 
@@ -112,19 +117,23 @@ Defaults to L<Pod::Wordlist::hanekomu>.
 
 =method spell_cmd
 
-If C<spell_cmd> is set then C<set_spell_cmd( your_spell_command );> is added
-to the test file to allow for custom spell check programs.
+If C<spell_cmd> is set then C<set_spell_cmd( your_spell_command );> is
+added to the test file to allow for custom spell check programs.
 
 Defaults to nothing.
 
 =method stopwords
 
-If stopwords is set then C<add_stopwords( E<lt>DATAE<gt> )> is added to the
-test file and the words are added after the C<__DATA__> section.
+If stopwords is set then C<add_stopwords( E<lt>DATAE<gt> )> is added
+to the test file and the words are added after the C<__DATA__>
+section.
 
 C<stopwords> can appear multiple times, one word per line.
 
-Defaults to nothing.
+Normally no stopwords are added by default, but author names appearing in
+C<dist.ini> are automatically added as stopwords so you don't have to add them
+manually just because they might appear in the C<AUTHORS> section of the
+generated POD document.
 
 =begin Pod::Coverage
 
@@ -133,7 +142,6 @@ mvp_multivalue_args
 =end Pod::Coverage
 
 =cut
-
 __DATA__
 ___[ xt/release/pod-spell.t ]___
 #!perl

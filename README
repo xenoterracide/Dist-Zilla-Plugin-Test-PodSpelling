@@ -2,7 +2,7 @@ NAME
     Dist::Zilla::Plugin::PodSpellingTests - Release tests for POD spelling
 
 VERSION
-    version 1.103491
+    version 1.111480
 
 SYNOPSIS
     In "dist.ini":
@@ -59,9 +59,11 @@ METHODS
 
     "stopwords" can appear multiple times, one word per line.
 
-    Defaults to nothing.
+    Normally no stopwords are added by default, but author names appearing
+    in "dist.ini" are automatically added as stopwords so you don't have to
+    add them manually just because they might appear in the "AUTHORS"
+    section of the generated POD document.
 
-ATTRIBUTES
 INSTALLATION
     See perlmodinstall for information and options on installing Perl
     modules.
@@ -80,8 +82,8 @@ AVAILABILITY
     <http://search.cpan.org/dist/Dist-Zilla-Plugin-PodSpellingTests/>.
 
     The development version lives at
-    <http://github.com/hanekomu/Dist-Zilla-Plugin-PodSpellingTests.git> and
-    may be cloned from
+    <http://github.com/hanekomu/Dist-Zilla-Plugin-PodSpellingTests> and may
+    be cloned from
     <git://github.com/hanekomu/Dist-Zilla-Plugin-PodSpellingTests.git>.
     Instead of sending patches, please fork this project using the standard
     git and github infrastructure.
