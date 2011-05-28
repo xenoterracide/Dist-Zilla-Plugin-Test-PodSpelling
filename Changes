@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+1.111480  2011-05-28 23:20:32 Europe/Vienna
     - automatically add author names from dist.ini to stopwords (thanks
       xenoterracide for the suggestion)
 
