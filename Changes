@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - Require Test::Spelling 0.12 in the injected test (thanks doherty for the
+      suggestion)
 
 1.111480  2011-05-28 23:20:32 Europe/Vienna
     - automatically add author names from dist.ini to stopwords (thanks
