@@ -7,7 +7,9 @@ use warnings;
 use Moose;
 extends 'Dist::Zilla::Plugin::InlineFiles';
 with 'Dist::Zilla::Role::TextTemplate';
-sub mvp_multivalue_args { qw( stopwords ) }
+
+sub mvp_multivalue_args { return qw( stopwords ) }
+
 has wordlist => (
     is      => 'ro',
     isa     => 'Str',
