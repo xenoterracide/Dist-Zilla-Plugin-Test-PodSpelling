@@ -3,7 +3,7 @@ use 5.008;
 use strict;
 use warnings;
 BEGIN {
-	our $VERSON = '1.112140';
+	our $VERSION = '1.112140';
 }
 use Moose;
 extends 'Dist::Zilla::Plugin::Test::PodSpelling';
