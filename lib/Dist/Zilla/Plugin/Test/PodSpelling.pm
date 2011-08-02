@@ -17,16 +17,19 @@ has wordlist => (
     isa     => 'Str',
     default => 'Pod::Wordlist::hanekomu',    # default to original
 );
+
 has spell_cmd => (
     is      => 'ro',
     isa     => 'Str',
     default => '',                           # default to original
 );
+
 has stopwords => (
     is      => 'ro',
     isa     => 'ArrayRef[Str]',
     default => sub { [] },                   # default to original
 );
+
 around add_file => sub {
     my ($orig, $self, $file) = @_;
     my ($set_spell_cmd, $add_stopwords, $stopwords);
@@ -59,6 +62,7 @@ around add_file => sub {
         ),
     );
 };
+
 __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
@@ -76,11 +80,6 @@ Dist::Zilla::Plugin::Test::PodSpelling - Author tests for POD spelling
 =head1 VERSION
 
 version v2.0
-
-=for stopwords wordlist
-
-=for test_synopsis 1;
-__END__
 
 =head1 SYNOPSIS
 
