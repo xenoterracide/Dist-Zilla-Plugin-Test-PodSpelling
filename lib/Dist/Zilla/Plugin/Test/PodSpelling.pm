@@ -63,7 +63,7 @@ __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
 
-# ABSTRACT: Release tests for POD spelling
+# ABSTRACT: Author tests for POD spelling
 
 =begin :prelude
 
