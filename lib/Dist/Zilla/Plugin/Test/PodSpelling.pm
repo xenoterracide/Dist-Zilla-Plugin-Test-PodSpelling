@@ -33,8 +33,8 @@ around add_file => sub {
     # automatically add author names to stopwords
     for (@{ $self->zilla->authors }) {
         local $_ = $_;    # we don't want to modify $_ in-place
-        s/<.*?>//g;
-        push @{ $self->stopwords }, /(\w{2,})/g;
+        s/<.*?>//gxms;
+        push @{ $self->stopwords }, /(\w{2,})/gxms;
     }
     if (@{ $self->stopwords } > 0) {
         $add_stopwords = 'add_stopwords(<DATA>);';
