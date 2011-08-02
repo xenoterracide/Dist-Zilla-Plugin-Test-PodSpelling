@@ -60,15 +60,22 @@ __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
 
-=begin :prelude
+
+
+=pod
+
+=head1 NAME
+
+Dist::Zilla::Plugin::PodSpellingTests - Release tests for POD spelling
+
+=head1 VERSION
+
+version v2.0
 
 =for stopwords wordlist
 
-=for test_synopsis
-1;
+=for test_synopsis 1;
 __END__
-
-=end :prelude
 
 =head1 SYNOPSIS
 
@@ -108,21 +115,23 @@ the following file:
 
   xt/release/pod-spell.t - a standard Test::Spelling test
 
-=method wordlist
+=head1 METHODS
+
+=head2 wordlist
 
 The module name of a word list you wish to use that works with
 L<Test::Spelling>.
 
 Defaults to L<Pod::Wordlist::hanekomu>.
 
-=method spell_cmd
+=head2 spell_cmd
 
 If C<spell_cmd> is set then C<set_spell_cmd( your_spell_command );> is
 added to the test file to allow for custom spell check programs.
 
 Defaults to nothing.
 
-=method stopwords
+=head2 stopwords
 
 If stopwords is set then C<add_stopwords( E<lt>DATAE<gt> )> is added
 to the test file and the words are added after the C<__DATA__>
@@ -135,13 +144,37 @@ C<dist.ini> are automatically added as stopwords so you don't have to add them
 manually just because they might appear in the C<AUTHORS> section of the
 generated POD document.
 
-=begin Pod::Coverage
+=for Pod::Coverage mvp_multivalue_args
 
-mvp_multivalue_args
+=head1 AUTHORS
 
-=end Pod::Coverage
+=over 4
+
+=item *
+
+Caleb Cushing <xenoterracide@gmail.com>
+
+=item *
+
+Marcel Gruenauer <marcel@cpan.org>
+
+=item *
+
+Harley Pig <harleypig@gmail.com>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2011 by Caleb Cushing.
+
+This is free software, licensed under:
+
+  The Artistic License 2.0 (GPL Compatible)
 
 =cut
+
+
 __DATA__
 ___[ xt/release/pod-spell.t ]___
 #!perl
