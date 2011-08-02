@@ -1,6 +1,6 @@
 Revision history for Perl extension Dist-Zilla-Plugin-Test-PodSpelling
 
-v2.0      2011-08-02
+2.0.0     2011-08-02
 
 1.111520  2011-06-01 14:35:59 Europe/Vienna
     - Require Test::Spelling 0.12 in the injected test (thanks doherty for the
