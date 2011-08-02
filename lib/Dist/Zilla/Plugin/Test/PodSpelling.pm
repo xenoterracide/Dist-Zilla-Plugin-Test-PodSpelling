@@ -1,8 +1,7 @@
+package Dist::Zilla::Plugin::Test::PodSpelling;
 use 5.008;
 use strict;
 use warnings;
-
-package Dist::Zilla::Plugin::Test::PodSpelling;
 
 # ABSTRACT: Release tests for POD spelling
 use Moose;
