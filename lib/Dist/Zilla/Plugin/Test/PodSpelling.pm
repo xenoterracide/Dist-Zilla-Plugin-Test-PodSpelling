@@ -147,7 +147,7 @@ mvp_multivalue_args
 
 =cut
 __DATA__
-___[ xt/release/pod-spell.t ]___
+___[ xt/author/pod-spell.t ]___
 #!perl
 
 use Test::More;
