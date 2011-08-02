@@ -6,7 +6,6 @@ BEGIN {
 	# VERSION
 }
 
-# ABSTRACT: Release tests for POD spelling
 use Moose;
 extends 'Dist::Zilla::Plugin::InlineFiles';
 with 'Dist::Zilla::Role::TextTemplate';
@@ -63,6 +62,8 @@ around add_file => sub {
 __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
+
+# ABSTRACT: Release tests for POD spelling
 
 =begin :prelude
 
