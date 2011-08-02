@@ -20,10 +20,10 @@ my %WriteMakefileArgs = (
   'CONFIGURE_REQUIRES' => {
     'ExtUtils::MakeMaker' => '6.30'
   },
-  'DISTNAME' => 'Dist-Zilla-Plugin-PodSpellingTests',
+  'DISTNAME' => 'Dist-Zilla-Plugin-Test-PodSpelling',
   'EXE_FILES' => [],
   'LICENSE' => 'artistic_2',
-  'NAME' => 'Dist::Zilla::Plugin::PodSpellingTests',
+  'NAME' => 'Dist::Zilla::Plugin::Test::PodSpelling',
   'PREREQ_PM' => {
     'Dist::Zilla::Plugin::InlineFiles' => '0',
     'Dist::Zilla::Role::TextTemplate' => '0',

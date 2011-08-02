@@ -1,5 +1,5 @@
 NAME
-    Dist::Zilla::Plugin::PodSpellingTests - Release tests for POD spelling
+    Dist::Zilla::Plugin::Test::PodSpelling - Release tests for POD spelling
 
 VERSION
     version v2.0

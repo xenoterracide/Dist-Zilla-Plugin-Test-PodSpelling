@@ -7,6 +7,7 @@ Makefile.PL
 README
 docs/SubmittingPatches.pod
 lib/Dist/Zilla/Plugin/PodSpellingTests.pm
+lib/Dist/Zilla/Plugin/Test/PodSpelling.pm
 perlcritic.rc
 t/00-compile.t
 t/author-critic.t

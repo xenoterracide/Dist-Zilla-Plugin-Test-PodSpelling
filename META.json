@@ -14,7 +14,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Dist-Zilla-Plugin-PodSpellingTests",
+   "name" : "Dist-Zilla-Plugin-Test-PodSpelling",
    "no_index" : {
       "file" : [
          "perlcritic.rc"

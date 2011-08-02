@@ -17,7 +17,7 @@ license: artistic_2
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
-name: Dist-Zilla-Plugin-PodSpellingTests
+name: Dist-Zilla-Plugin-Test-PodSpelling
 no_index:
   file:
     - perlcritic.rc
