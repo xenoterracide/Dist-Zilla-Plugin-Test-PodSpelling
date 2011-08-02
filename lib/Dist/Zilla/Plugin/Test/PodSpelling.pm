@@ -73,26 +73,11 @@ no Moose;
 
 In C<dist.ini>:
 
-    [PodSpellingTests]
+    [Test::PodSpelling]
 
 or:
 
-    [PodSpellingTests]
-    wordlist = Pod::Wordlist
-    spell_cmd = aspell list
-    stopwords = CPAN
-    stopwords = github
-    stopwords = stopwords
-    stopwords = wordlist
-
-or, if you wanted to use my plugin bundle but just override this plugin's
-configuration:
-
-    [@Filter]
-    -bundle = @MARCEL
-    -remove = PodSpellingTests
-
-    [PodSpellingTests]
+    [Test::PodSpelling]
     wordlist = Pod::Wordlist
     spell_cmd = aspell list
     stopwords = CPAN
@@ -105,7 +90,7 @@ configuration:
 This is an extension of L<Dist::Zilla::Plugin::InlineFiles>, providing
 the following file:
 
-  xt/release/pod-spell.t - a standard Test::Spelling test
+  xt/author/pod-spell.t - a standard Test::Spelling test
 
 =method wordlist
 
