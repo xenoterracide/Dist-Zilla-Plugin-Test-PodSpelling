@@ -1,5 +1,5 @@
 ---
-abstract: 'Release tests for POD spelling'
+abstract: 'Author tests for POD spelling'
 author:
   - 'Caleb Cushing <xenoterracide@gmail.com>'
   - 'Marcel Gruenauer <marcel@cpan.org>'

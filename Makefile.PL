@@ -9,7 +9,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Release tests for POD spelling',
+  'ABSTRACT' => 'Author tests for POD spelling',
   'AUTHOR' => 'Caleb Cushing <xenoterracide@gmail.com>, Marcel Gruenauer <marcel@cpan.org>, Harley Pig <harleypig@gmail.com>',
   'BUILD_REQUIRES' => {
     'English' => '0',
