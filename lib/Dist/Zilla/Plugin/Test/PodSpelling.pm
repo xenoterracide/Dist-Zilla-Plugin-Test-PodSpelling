@@ -69,16 +69,6 @@ no Moose;
 
 # ABSTRACT: Author tests for POD spelling
 
-=begin :prelude
-
-=for stopwords wordlist
-
-=for test_synopsis
-1;
-__END__
-
-=end :prelude
-
 =head1 SYNOPSIS
 
 In C<dist.ini>:
