@@ -2,6 +2,9 @@ package Dist::Zilla::Plugin::Test::PodSpelling;
 use 5.008;
 use strict;
 use warnings;
+BEGIN {
+	our $VERSION = 'v2.0'; # VERSION
+}
 
 # ABSTRACT: Release tests for POD spelling
 use Moose;
