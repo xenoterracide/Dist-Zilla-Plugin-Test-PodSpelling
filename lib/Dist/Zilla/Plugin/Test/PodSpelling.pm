@@ -47,11 +47,11 @@ around add_file => sub {
 	if ( $self->zilla->copyright_holder ) {
 		for ( split( ' ', $self->zilla->copyright_holder ) ) {
 			local $_ = $_;
-			my ( $word ) = $_ =~ /(\w)/;
+			my ( $word ) = $_ =~ /(\w+)/xms;
 			
 			$self->log_debug( $word );
 
-			push @{ $self->stopwords },;
+			push @{ $self->stopwords }, $word;
 		}
 	} else {
 		$self->log_debug( 'no copyright_holder found' );
