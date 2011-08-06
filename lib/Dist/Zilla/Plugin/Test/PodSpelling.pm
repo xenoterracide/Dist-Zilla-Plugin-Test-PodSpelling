@@ -44,8 +44,8 @@ around add_file => sub {
         push @{ $self->stopwords }, /(\w{2,})/gxms;
     }
 
-	if ( $self->stash_named( 'copyright_holder' ) ) {
-		for ( split( ' ', $self->stash_named( 'copyright_holder' ) ) ) {
+	if ( $self->zilla->stash_named( 'copyright_holder' ) ) {
+		for ( split( ' ', $self->zilla->stash_named( 'copyright_holder' ) ) ) {
 			$self->log_debug( $_ );
 			push @{ $self->stopwords };
 		}
