@@ -6,9 +6,11 @@ v2.0.0    2011-08-06
 	[FEATURES]
 	- automatically add copyright owner to stopwords
 	- use semantic versioning
-	- ownership passes to xenoterracide
 	[DEPRECATED]
 	- use of PodSpellingTests Plugin, use Test::PodSpelling instead.
+	[OTHER]
+	- ownership passes to xenoterracide
+	- Dist Name changed with Module name
 
 1.111520  2011-06-01 14:35:59 Europe/Vienna
 	- Require Test::Spelling 0.12 in the injected test (thanks doherty for the
