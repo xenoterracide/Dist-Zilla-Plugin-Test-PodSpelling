@@ -34,9 +34,12 @@ version v2.0
 This Plugin extends L<Dist::Zilla::Test::PodSpelling> and adds nothing. It is the old
 name for C<[Test::PodSpelling]> and will be removed in a few versions.
 
-=head1 VERSION
+=head1 MODULE VERSION
 
 version 1.112140
+
+I<note: this version is statically defined for this module, and does not
+follow that of the dist>
 
 =head1 SEE ALSO
 

@@ -7,17 +7,17 @@ VERSION
 SYNOPSIS
     In "dist.ini":
 
-        [Test::PodSpelling]
+            [Test::PodSpelling]
 
     or:
 
-        [Test::PodSpelling]
-        wordlist = Pod::Wordlist
-        spell_cmd = aspell list
-        stopwords = CPAN
-        stopwords = github
-        stopwords = stopwords
-        stopwords = wordlist
+            [Test::PodSpelling]
+            wordlist = Pod::Wordlist
+            spell_cmd = aspell list
+            stopwords = CPAN
+            stopwords = github
+            stopwords = stopwords
+            stopwords = wordlist
 
 DESCRIPTION
     This is an extension of Dist::Zilla::Plugin::InlineFiles, providing the

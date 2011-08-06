@@ -13,40 +13,40 @@ with 'Dist::Zilla::Role::TextTemplate';
 sub mvp_multivalue_args { return qw( stopwords ) }
 
 has wordlist => (
-    is      => 'ro',
-    isa     => 'Str',
-    default => 'Pod::Wordlist::hanekomu',    # default to original
+	is		=> 'ro',
+	isa		=> 'Str',
+	default => 'Pod::Wordlist::hanekomu',	 # default to original
 );
 
 has spell_cmd => (
-    is      => 'ro',
-    isa     => 'Str',
-    default => '',                           # default to original
+	is		=> 'ro',
+	isa		=> 'Str',
+	default => '',							 # default to original
 );
 
 has stopwords => (
-    is      => 'ro',
-    isa     => 'ArrayRef[Str]',
-	traits  => [ 'Array' ],
-    default => sub { [] },                   # default to original
+	is		=> 'ro',
+	isa		=> 'ArrayRef[Str]',
+	traits	=> [ 'Array' ],
+	default => sub { [] },					 # default to original
 	handles => {
 		push_stopwords => 'push',
 	}
 );
 
 around add_file => sub {
-    my ($orig, $self, $file) = @_;
-    my ($set_spell_cmd, $add_stopwords, $stopwords);
-    if ($self->spell_cmd) {
-        $set_spell_cmd = sprintf "set_spell_cmd('%s');", $self->spell_cmd;
-    }
+	my ($orig, $self, $file) = @_;
+	my ($set_spell_cmd, $add_stopwords, $stopwords);
+	if ($self->spell_cmd) {
+		$set_spell_cmd = sprintf "set_spell_cmd('%s');", $self->spell_cmd;
+	}
 
-    # automatically add author names to stopwords
-    for (@{ $self->zilla->authors }) {
-        local $_ = $_;    # we don't want to modify $_ in-place
-        s/<.*?>//gxms;
-        push @{ $self->stopwords }, /(\w{2,})/gxms;
-    }
+	# automatically add author names to stopwords
+	for (@{ $self->zilla->authors }) {
+		local $_ = $_;	  # we don't want to modify $_ in-place
+		s/<.*?>//gxms;
+		push @{ $self->stopwords }, /(\w{2,})/gxms;
+	}
 
 	if ( $self->zilla->copyright_holder ) {
 		for ( split( ' ', $self->zilla->copyright_holder ) ) {
@@ -60,24 +60,24 @@ around add_file => sub {
 		$self->log_debug( 'no copyright_holder found' );
 	}
 
-    if (@{ $self->stopwords } > 0) {
-        $add_stopwords = 'add_stopwords(<DATA>);';
-        $stopwords = join "\n", '__DATA__', @{ $self->stopwords };
-    }
-    $self->$orig(
-        Dist::Zilla::File::InMemory->new(
-            {   name    => $file->name,
-                content => $self->fill_in_string(
-                    $file->content,
-                    {   wordlist      => \$self->wordlist,
-                        set_spell_cmd => \$set_spell_cmd,
-                        add_stopwords => \$add_stopwords,
-                        stopwords     => \$stopwords,
-                    },
-                ),
-            }
-        ),
-    );
+	if (@{ $self->stopwords } > 0) {
+		$add_stopwords = 'add_stopwords(<DATA>);';
+		$stopwords = join "\n", '__DATA__', @{ $self->stopwords };
+	}
+	$self->$orig(
+		Dist::Zilla::File::InMemory->new(
+			{	name	=> $file->name,
+				content => $self->fill_in_string(
+					$file->content,
+					{	wordlist	  => \$self->wordlist,
+						set_spell_cmd => \$set_spell_cmd,
+						add_stopwords => \$add_stopwords,
+						stopwords	  => \$stopwords,
+					},
+				),
+			}
+		),
+	);
 };
 
 __PACKAGE__->meta->make_immutable;
@@ -102,17 +102,17 @@ version v2.0
 
 In C<dist.ini>:
 
-    [Test::PodSpelling]
+	[Test::PodSpelling]
 
 or:
 
-    [Test::PodSpelling]
-    wordlist = Pod::Wordlist
-    spell_cmd = aspell list
-    stopwords = CPAN
-    stopwords = github
-    stopwords = stopwords
-    stopwords = wordlist
+	[Test::PodSpelling]
+	wordlist = Pod::Wordlist
+	spell_cmd = aspell list
+	stopwords = CPAN
+	stopwords = github
+	stopwords = stopwords
+	stopwords = wordlist
 
 =head1 DESCRIPTION
 
