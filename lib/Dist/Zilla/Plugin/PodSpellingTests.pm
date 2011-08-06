@@ -17,6 +17,9 @@ __PACKAGE__->meta->make_immutable;
 1;
 
 # ABSTRACT: (DEPRECATED) The old name of the PodSpelling plugin
+=head1 VERSION
+
+version 1.112140
 
 =head1 SYNOPSIS
 
