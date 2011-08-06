@@ -43,6 +43,12 @@ around add_file => sub {
         s/<.*?>//gxms;
         push @{ $self->stopwords }, /(\w{2,})/gxms;
     }
+
+	for ( split( ' ', $self->stash_named( 'copyright_holder' ) ) ) {
+		$self->log_debug( $_ );
+		push @{ $self->stopwords };
+	}
+
     if (@{ $self->stopwords } > 0) {
         $add_stopwords = 'add_stopwords(<DATA>);';
         $stopwords = join "\n", '__DATA__', @{ $self->stopwords };
