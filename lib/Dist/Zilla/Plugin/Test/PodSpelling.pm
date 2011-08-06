@@ -44,9 +44,13 @@ around add_file => sub {
         push @{ $self->stopwords }, /(\w{2,})/gxms;
     }
 
-	for ( split( ' ', $self->stash_named( 'copyright_holder' ) ) ) {
-		$self->log_debug( $_ );
-		push @{ $self->stopwords };
+	if ( $self->stash_named( 'copyright_holder' ) ) {
+		for ( split( ' ', $self->stash_named( 'copyright_holder' ) ) ) {
+			$self->log_debug( $_ );
+			push @{ $self->stopwords };
+		}
+	} else {
+		$self->log_debug( 'no copyright_holder found' );
 	}
 
     if (@{ $self->stopwords } > 0) {
