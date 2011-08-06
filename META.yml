@@ -28,5 +28,7 @@ requires:
   Pod::Wordlist::hanekomu: 0
   Test::Spelling: 0
   perl: 5.008
-resources: {}
+resources:
+  bugtracker: https://github.com/xenoterracide/Dist-Zilla-Plugin-Test-PodSpelling/issues
+  repository: git://github.com/xenoterracide/Dist-Zilla-Plugin-Test-PodSpelling.git
 version: v2.0

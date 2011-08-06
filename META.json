@@ -47,8 +47,13 @@
    },
    "release_status" : "stable",
    "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/xenoterracide/Dist-Zilla-Plugin-Test-PodSpelling/issues"
+      },
       "repository" : {
-         "type" : "git"
+         "type" : "git",
+         "url" : "git://github.com/xenoterracide/Dist-Zilla-Plugin-Test-PodSpelling.git",
+         "web" : "https://github.com/xenoterracide/Dist-Zilla-Plugin-Test-PodSpelling"
       }
    },
    "version" : "v2.0"
