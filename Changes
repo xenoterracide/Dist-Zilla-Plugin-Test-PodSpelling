@@ -5,6 +5,7 @@ Revision history for Perl extension {{$dist->name}}
 v2.0.0    2011-08-06
 	[FEATURES]
 	- automatically add copyright owner to stopwords
+	- now an author test
 	- use semantic versioning
 	[DEPRECATED]
 	- use of PodSpellingTests Plugin, use Test::PodSpelling instead.
