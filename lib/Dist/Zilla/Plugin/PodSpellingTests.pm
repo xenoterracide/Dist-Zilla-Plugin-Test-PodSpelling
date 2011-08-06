@@ -18,7 +18,6 @@ __PACKAGE__->meta->make_immutable;
 
 # ABSTRACT: (DEPRECATED) The old name of the PodSpelling plugin
 
-
 __END__
 =pod
 
@@ -34,6 +33,10 @@ version v2.0
 
 This Plugin extends L<Dist::Zilla::Test::PodSpelling> and adds nothing. It is the old
 name for C<[Test::PodSpelling]> and will be removed in a few versions.
+
+=head1 VERSION
+
+version 1.112140
 
 =head1 SEE ALSO
 
