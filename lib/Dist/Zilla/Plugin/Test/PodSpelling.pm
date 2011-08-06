@@ -3,7 +3,7 @@ use 5.008;
 use strict;
 use warnings;
 BEGIN {
-	our $VERSION = '2.0.0'; # VERSION
+	our $VERSION = 'v2.0'; # VERSION
 }
 
 use Moose;
@@ -43,6 +43,12 @@ around add_file => sub {
         s/<.*?>//gxms;
         push @{ $self->stopwords }, /(\w{2,})/gxms;
     }
+
+	for ( split( ' ', $self->stash_named( 'copyright_holder' ) ) ) {
+		$self->log_debug( $_ );
+		push @{ $self->stopwords };
+	}
+
     if (@{ $self->stopwords } > 0) {
         $add_stopwords = 'add_stopwords(<DATA>);';
         $stopwords = join "\n", '__DATA__', @{ $self->stopwords };
@@ -79,7 +85,7 @@ Dist::Zilla::Plugin::Test::PodSpelling - Author tests for POD spelling
 
 =head1 VERSION
 
-version 2.0.0
+version v2.0
 
 =head1 SYNOPSIS
 
