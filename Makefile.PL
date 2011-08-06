@@ -31,7 +31,7 @@ my %WriteMakefileArgs = (
     'Pod::Wordlist::hanekomu' => '0',
     'Test::Spelling' => '0'
   },
-  'VERSION' => 'v2.0.0',
+  'VERSION' => '2.0.1',
   'test' => {
     'TESTS' => 't/*.t'
   }
