@@ -27,7 +27,11 @@ has spell_cmd => (
 has stopwords => (
     is      => 'ro',
     isa     => 'ArrayRef[Str]',
+	traits  => [ 'Array' ],
     default => sub { [] },                   # default to original
+	handles => {
+		push_stopwords => 'push',
+	}
 );
 
 around add_file => sub {
@@ -44,10 +48,13 @@ around add_file => sub {
         push @{ $self->stopwords }, /(\w{2,})/gxms;
     }
 
-	if ( $self->zilla->stash_named( 'copyright_holder' ) ) {
-		for ( split( ' ', $self->zilla->stash_named( 'copyright_holder' ) ) ) {
-			$self->log_debug( $_ );
-			push @{ $self->stopwords };
+	if ( $self->zilla->copyright_holder ) {
+		for ( split( ' ', $self->zilla->copyright_holder ) ) {
+			my ( $word ) = $_ =~ /(\w+)/xms;
+
+			$self->log_debug( 'copyright_holder word: ' . $word );
+
+			$self->push_stopwords( $word );
 		}
 	} else {
 		$self->log_debug( 'no copyright_holder found' );
