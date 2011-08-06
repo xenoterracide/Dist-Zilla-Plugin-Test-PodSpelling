@@ -13,22 +13,22 @@ with 'Dist::Zilla::Role::TextTemplate';
 sub mvp_multivalue_args { return qw( stopwords ) }
 
 has wordlist => (
-	is		=> 'ro',
-	isa		=> 'Str',
-	default => 'Pod::Wordlist::hanekomu',	 # default to original
+	is      => 'ro',
+	isa     => 'Str',
+	default => 'Pod::Wordlist::hanekomu',    # default to original
 );
 
 has spell_cmd => (
-	is		=> 'ro',
-	isa		=> 'Str',
-	default => '',							 # default to original
+	is      => 'ro',
+	isa     => 'Str',
+	default => '',                           # default to original
 );
 
 has stopwords => (
-	is		=> 'ro',
-	isa		=> 'ArrayRef[Str]',
-	traits	=> [ 'Array' ],
-	default => sub { [] },					 # default to original
+	is      => 'ro',
+	isa     => 'ArrayRef[Str]',
+	traits  => [ 'Array' ],
+	default => sub { [] },                   # default to original
 	handles => {
 		push_stopwords => 'push',
 	}
@@ -43,7 +43,7 @@ around add_file => sub {
 
 	# automatically add author names to stopwords
 	for (@{ $self->zilla->authors }) {
-		local $_ = $_;	  # we don't want to modify $_ in-place
+		local $_ = $_;    # we don't want to modify $_ in-place
 		s/<.*?>//gxms;
 		push @{ $self->stopwords }, /(\w{2,})/gxms;
 	}
@@ -66,13 +66,13 @@ around add_file => sub {
 	}
 	$self->$orig(
 		Dist::Zilla::File::InMemory->new(
-			{	name	=> $file->name,
+			{   name    => $file->name,
 				content => $self->fill_in_string(
 					$file->content,
-					{	wordlist	  => \$self->wordlist,
+					{   wordlist      => \$self->wordlist,
 						set_spell_cmd => \$set_spell_cmd,
 						add_stopwords => \$add_stopwords,
-						stopwords	  => \$stopwords,
+						stopwords     => \$stopwords,
 					},
 				),
 			}
