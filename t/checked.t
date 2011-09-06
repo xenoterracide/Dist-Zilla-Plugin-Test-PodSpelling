@@ -9,12 +9,13 @@ use Path::Class;
 use Cwd ();
 
 # lib/ and bin/
-spell_check_dist( foo   => file(qw(bin foo)), file(qw(lib Foo.pm)) );
+spell_check_dist( foo   => [file(qw(bin foo)) => {ok => 0}], file(qw(lib Foo.pm)) );
 # just lib/
 spell_check_dist( nobin => file(qw(lib Foo.pm)) );
 
 done_testing;
 
+# @files should be a file (name) or an array ref of [file, hash-to-override-expected-results]
 sub spell_check_dist {
   my ($dir, @files) = @_;
   my $tzil = Dist::Zilla::Tester->from_config({
@@ -40,11 +41,13 @@ sub spell_check_dist {
       map {
         +{
           ok => 1,
-          name => 'POD spelling for ' . $_,
+          name => 'POD spelling for ' . $_->[0],
           # depth: starts at 1; +1 for do-file; +1 for the all_ func
           depth => 3,
+          %{ $_->[1] },
         },
       }
+      map { ref $_ eq 'ARRAY' ? $_ : [$_ => {}] }
         @files
     ],
     "spell check pod for $dir"
