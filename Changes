@@ -2,6 +2,12 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.1.0     2011-10-08
+	[FEATURES]
+	- now checks your bin/ scripts for pod spelling errors
+	[OTHER]
+	- added tests
+
 v2.0.0    2011-08-06
 	[FEATURES]
 	- automatically add copyright owner to stopwords
