@@ -2,6 +2,9 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.001001  2011-10-26
+	- skip test if no spellchecking engine found ( rwstauner )
+
 2.1.0     2011-10-08
 	[FEATURES]
 	- now checks your bin/ scripts for pod spelling errors
