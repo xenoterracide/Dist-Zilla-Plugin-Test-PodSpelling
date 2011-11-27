@@ -2,9 +2,8 @@ package Dist::Zilla::Plugin::Test::PodSpelling;
 use 5.008;
 use strict;
 use warnings;
-BEGIN {
-	# VERSION
-}
+
+# VERSION
 
 use Moose;
 extends 'Dist::Zilla::Plugin::InlineFiles';
