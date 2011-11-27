@@ -14,6 +14,8 @@ BEGIN {
 		unless has_working_spellchecker;
 }
 
+ok( has_working_spellchecker, 'test has working spellchecker' );
+
 # lib/ and bin/
 spell_check_dist( foo   => [file(qw(bin foo)) => {ok => 0}], file(qw(lib Foo.pm)) );
 # just lib/
