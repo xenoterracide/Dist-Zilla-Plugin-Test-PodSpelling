@@ -30,6 +30,8 @@ has stopwords => (
 	default => sub { [] },                   # default to original
 	handles => {
 		push_stopwords => 'push',
+		uniq_stopwords => 'uniq',
+		no_stopwords   => 'is_empty',
 	}
 );
 
@@ -59,9 +61,9 @@ around add_file => sub {
 		$self->log_debug( 'no copyright_holder found' );
 	}
 
-	if (@{ $self->stopwords } > 0) {
+	unless ( $self->no_stopwords ) {
 		$add_stopwords = 'add_stopwords(<DATA>);';
-		$stopwords = join "\n", '__DATA__', @{ $self->stopwords };
+		$stopwords = join "\n", '__DATA__', $self->uniq_stopwords;
 	}
 	$self->$orig(
 		Dist::Zilla::File::InMemory->new(
