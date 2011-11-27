@@ -2,6 +2,10 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.001002  2011-11-27
+	- remove issue where duplicate stopwords could be created
+	- attempt to fix issue with spellchecking engines not working
+
 2.001001  2011-10-26
 	- skip test if no spellchecking engine found ( rwstauner )
 
