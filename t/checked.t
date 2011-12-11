@@ -10,8 +10,15 @@ use Path::Class;
 use Cwd ();
 
 BEGIN {
+	use English;
+
 	plan skip_all => 'No working spellchecker found'
 		unless has_working_spellchecker;
+
+	plan skip_all => 'This Test has problems on BSD... patches welcome'
+		if $OSNAME =~ m/bsd/i;
+
+	no English;
 }
 
 ok( has_working_spellchecker, 'test has working spellchecker' );
