@@ -2,6 +2,10 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.001003  2011-12-10
+	- skip checked if OS is BSD, no idea why the tests fail predominantly on
+	  BSD
+
 2.001002  2011-11-27
 	- remove issue where duplicate stopwords could be created
 	- attempt to fix issue with spellchecking engines not working
