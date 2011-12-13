@@ -137,16 +137,6 @@ C<dist.ini> are automatically added as stopwords so you don't have to add them
 manually just because they might appear in the C<AUTHORS> section of the
 generated POD document.
 
-=head1 ACKNOWLEDGMENTS
-
-=over
-
-=item * Randy Stauner
-
-providing initial tests
-
-=back
-
 =begin Pod::Coverage
 
 mvp_multivalue_args
