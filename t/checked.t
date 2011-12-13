@@ -9,6 +9,11 @@ use Dist::Zilla::Tester;
 use Path::Class;
 use Cwd ();
 
+BEGIN {
+  plan skip_all => 'Perl must be in your path for these tests'
+    unless qx/perl -e "print 123"/ == 123;
+}
+
 # This test uses a custom "spell checker" defined in corpus/*/dist.ini
 # (setting it here didn't work, it seems to get overridden in the do-file)
 # to produce reliable output so that we can ensure that each expected
