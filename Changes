@@ -2,6 +2,10 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.001004  2011-12-13
+	- Fix tests so that spell check passes ( rwstauner )
+	- Test test contents ( rwstauner )
+
 2.001003  2011-12-10
 	- skip checked if OS is BSD, no idea why the tests fail predominantly on
 	  BSD
