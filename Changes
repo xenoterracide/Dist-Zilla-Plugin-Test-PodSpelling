@@ -2,6 +2,9 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.002001  2012-01-10
+	- fix copyright year
+
 2.002000  2012-01-10
 	- Generate stopwords based on the file names in the distribution
 
