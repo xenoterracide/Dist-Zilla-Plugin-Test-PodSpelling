@@ -89,7 +89,7 @@ around add_file => sub {
 					$file->content,
 					{
 						name          => __PACKAGE__,
-						version       => \$self->VERSION
+						version       => __PACKAGE__->VERSION
 							|| 'bootstrapped version',
 						wordlist      => \$self->wordlist,
 						set_spell_cmd => \$set_spell_cmd,
