@@ -56,7 +56,9 @@ around add_file => sub {
 
 	if ( $self->zilla->copyright_holder ) {
 		for ( split( ' ', $self->zilla->copyright_holder ) ) {
-			my ( $word ) = $_ =~ /(\w+)/xms;
+			my ( $word ) = $_ =~ /(\w{2,})/xms;
+
+			next unless $word;
 
 			$self->log_debug( 'copyright_holder word: ' . $word );
 

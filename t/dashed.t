@@ -6,7 +6,11 @@ use Test::DZil;
 
 # test the file content generated when various attributes are set
 
-my $author = 'Fooer';
+my $fname  = 'Fo';
+my $mi     = 'G';
+my $lname1 = 'oer';
+my $lname2 = 'bar';
+my $author = "$fname $mi $lname1 - $lname2";
 
 sub get_content {
   my ($args) = @_;
@@ -37,19 +41,9 @@ sub get_content {
 }
 
 my $content = get_content({});
-  like $content, qr/Pod::Wordlist::hanekomu/, q[use default wordlist];
-unlike $content, qr/set_spell_cmd/,               q[by default don't set spell command];
-  like $content, qr/add_stopwords/,               q[by default we add stopwords];
-  like $content, qr/__DATA__\s$author/,           q[DATA handle includes author];
-
-$content = get_content({wordlist => 'Foo::Bar'});
-unlike $content, qr/Pod::Wordlist::hanekomu/, q[custom word list];
-  like $content, qr/Foo::Bar/,                q[custom word list];
-
-$content = get_content({spell_cmd => 'all_wrong'});
-  like $content, qr/set_spell_cmd.+all_wrong/,    q[custom spell checker];
-
-$content = get_content({stopwords => 'foohoo'});
-  like $content, qr/__DATA__\s(.*\s)*foohoo\b/,   q[add stopwords];
+like $content, qr/^$fname $/xms, q[includes first name];
+like $content, qr/^$lname1$/xms, q[includes last name 1];
+like $content, qr/^$lname2$/xms, q[includes last name 2];
+unlike $content, qr/^$mi  $/xms, q[doesnot include the midddle initial];
 
 done_testing;
