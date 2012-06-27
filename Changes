@@ -2,6 +2,9 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.002005  2012-06-27
+	- fix test for perls < 5.10 where qr//m did not work properly
+
 2.002004  2012-04-04
 	- appears that I forgot to merge 2.002002 before releasing 2.002003
 
