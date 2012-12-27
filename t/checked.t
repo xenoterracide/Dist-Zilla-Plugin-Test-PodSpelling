@@ -8,8 +8,11 @@ use Test::Spelling;
 use Dist::Zilla::Tester;
 use Path::Class;
 use Cwd ();
+use English '-no_match_vars';
 
 BEGIN {
+  plan skip_all => 'FIXME: This test is broken on win32'
+    if $OSNAME eq 'MSWin32';
   plan skip_all => 'Perl must be in your path for these tests'
     unless qx/perl -e "print 123"/ == 123;
 }
