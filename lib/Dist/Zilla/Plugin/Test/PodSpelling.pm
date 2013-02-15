@@ -191,5 +191,5 @@ eval "use Test::Spelling 0.12; use {{ $wordlist }}; 1" or die $@;
 
 {{ $set_spell_cmd }}
 {{ $add_stopwords }}
-all_pod_files_spelling_ok( qw( lib {{ $directories }} ) );
+all_pod_files_spelling_ok( qw( bin lib {{ $directories }} ) );
 {{ $stopwords }}
