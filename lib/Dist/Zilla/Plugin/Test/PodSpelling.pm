@@ -63,6 +63,7 @@ sub add_stopword {
 	$self->log_debug( 'add stopword: ' . $word );
 
 	$self->push_stopwords( $word );
+	return;
 }
 
 around add_file => sub {
