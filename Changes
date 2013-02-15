@@ -2,6 +2,11 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.004000  2013-02-14
+	- Add support for customizable search directories GH #8
+	- fix bug where unicode names weren't being added properly as stopwords
+	  GH #9
+
 2.002006  2012-12-29
 	- FIXME: skip checked.t for windows, it hangs see Github issue #7
 
