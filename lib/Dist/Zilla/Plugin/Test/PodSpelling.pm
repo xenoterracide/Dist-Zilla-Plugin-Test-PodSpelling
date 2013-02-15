@@ -132,6 +132,7 @@ In C<dist.ini>:
 or:
 
 	[Test::PodSpelling]
+	directories = docs
 	wordlist = Pod::Wordlist
 	spell_cmd = aspell list
 	stopwords = CPAN
@@ -146,27 +147,32 @@ the following file:
 
   xt/author/pod-spell.t - a standard Test::Spelling test
 
-=method wordlist
-
-The module name of a word list you wish to use that works with
-L<Test::Spelling>.
-
-Defaults to L<Pod::Wordlist::hanekomu>.
-
 =method add_stopword
 
 Called to add stopwords to the stopwords array. It is used to determine if
 automagically detected words are valid and print out debug logging for the
 process.
 
-=method spell_cmd
+=attr directories
+
+Additional directories you wish to search for POD spell checking purposes.
+C<bin> and C<lib> are set by default.
+
+=attr wordlist
+
+The module name of a word list you wish to use that works with
+L<Test::Spelling>.
+
+Defaults to L<Pod::Wordlist::hanekomu>.
+
+=attr spell_cmd
 
 If C<spell_cmd> is set then C<set_spell_cmd( your_spell_command );> is
 added to the test file to allow for custom spell check programs.
 
 Defaults to nothing.
 
-=method stopwords
+=attr stopwords
 
 If stopwords is set then C<add_stopwords( E<lt>DATAE<gt> )> is added
 to the test file and the words are added after the C<__DATA__>
