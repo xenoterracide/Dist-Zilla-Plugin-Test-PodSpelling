@@ -54,8 +54,10 @@ has directories => (
 sub add_stopword {
 	my ( $self, $data ) = @_;
 
+	# words must be greater than 2 characters
 	my ( $word ) = $data =~ /(\w{2,})/uxms;
 
+	# log won't like an undef
 	return unless $word;
 
 	$self->log_debug( 'add stopword: ' . $word );
