@@ -2,6 +2,9 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.004001  2013-02-14
+	- Add documentation for directories feature
+
 2.004000  2013-02-14
 	- Add support for customizable search directories GH #8
 	- fix bug where unicode names weren't being added properly as stopwords
