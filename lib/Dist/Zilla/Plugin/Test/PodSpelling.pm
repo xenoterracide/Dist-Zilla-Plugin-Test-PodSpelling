@@ -54,6 +54,7 @@ has directories => (
 sub add_stopword {
 	my ( $self, $data ) = @_;
 
+	$self->log_debug( 'attempting stopwords extraction from: ' . $data );
 	# words must be greater than 2 characters
 	my ( $word ) = $data =~ /(\w{2,})/uxms;
 
@@ -73,17 +74,12 @@ around add_file => sub {
 		$set_spell_cmd = sprintf "set_spell_cmd('%s');", $self->spell_cmd;
 	}
 
-	# automatically add author names to stopwords
-	foreach my $name (@{ $self->zilla->authors }) {
-		$self->add_stopword( $name );
-	}
-
-	if ( $self->zilla->copyright_holder ) {
-		foreach my $holder ( split( /\s/uxms, $self->zilla->copyright_holder ) ) {
-			$self->add_stopword( $holder );
-		}
-	} else {
-		$self->log_debug( 'no copyright_holder found' );
+	foreach my $holder ( split( /\s/uxms, join( ' ',
+			@{ $self->zilla->authors },
+			$self->zilla->copyright_holder,
+		))
+	) {
+		$self->add_stopword( $holder );
 	}
 
 	foreach my $file ( @{ $self->found_files } ) {
