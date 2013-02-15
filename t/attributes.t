@@ -6,8 +6,9 @@ use Test::DZil;
 
 # test the file content generated when various attributes are set
 
-my $author = 'Fooer';
-
+my $fname  = 'Richard';
+my $lname  = 'Simões';
+my $author = join ' ', $fname, $lname;
 sub get_content {
   my ($args) = @_;
 
@@ -18,11 +19,11 @@ sub get_content {
       add_files => {
         'source/dist.ini' => dist_ini(
           {
-            name => 'Spell-Checked',
-            version => 1,
-            abstract => 'spelled wrong',
-            license => 'Perl_5',
-            author => $author,
+            name             => 'Spell-Checked',
+            version          => 1,
+            abstract         => 'spelled wrong',
+            license          => 'Perl_5',
+            author           => $author,
             copyright_holder => $author,
           },
           [$name => $args],
@@ -40,7 +41,7 @@ my $content = get_content({});
   like $content, qr/Pod::Wordlist::hanekomu/, q[use default wordlist];
 unlike $content, qr/set_spell_cmd/,               q[by default don't set spell command];
   like $content, qr/add_stopwords/,               q[by default we add stopwords];
-  like $content, qr/__DATA__\s$author/,           q[DATA handle includes author];
+  like $content, qr/__DATA__\s$fname\n$lname/,    q[DATA handle includes author];
 
 $content = get_content({wordlist => 'Foo::Bar'});
 unlike $content, qr/Pod::Wordlist::hanekomu/, q[custom word list];
