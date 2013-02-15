@@ -153,6 +153,12 @@ L<Test::Spelling>.
 
 Defaults to L<Pod::Wordlist::hanekomu>.
 
+=method add_stopwords
+
+Called to add stopwords to the stopwords array. It is used to determine if
+automagically detected words are valid and print out debug logging for the
+process.
+
 =method spell_cmd
 
 If C<spell_cmd> is set then C<set_spell_cmd( your_spell_command );> is
