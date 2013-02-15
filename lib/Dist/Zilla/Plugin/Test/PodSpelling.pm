@@ -1,5 +1,5 @@
 package Dist::Zilla::Plugin::Test::PodSpelling;
-use 5.008;
+use 5.014;
 use strict;
 use warnings;
 
@@ -49,14 +49,14 @@ around add_file => sub {
 
 	# automatically add author names to stopwords
 	for (@{ $self->zilla->authors }) {
-		local $_ = $_;    # we don't want to modify $_ in-place
-		s/<.*?>//gxms;
-		push @{ $self->stopwords }, /(\w{2,})/gxms;
+		my ( $word ) = $_ =~ /(\w{2,})/uxms;
+		$self->log_debug( 'author name: ' . $word );
+		$self->push_stopwords( $word );
 	}
 
 	if ( $self->zilla->copyright_holder ) {
-		for ( split( ' ', $self->zilla->copyright_holder ) ) {
-			my ( $word ) = $_ =~ /(\w{2,})/xms;
+		for ( split( /\s/uxms, $self->zilla->copyright_holder ) ) {
+			my ( $word ) = $_ =~ /(\w{2,})/uxms;
 
 			next unless $word;
 
