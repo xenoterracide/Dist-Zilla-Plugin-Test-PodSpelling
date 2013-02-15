@@ -1,5 +1,5 @@
 package Dist::Zilla::Plugin::Test::PodSpelling;
-use 5.014;
+use 5.010;
 use strict;
 use warnings;
 
@@ -56,7 +56,7 @@ sub add_stopword {
 
 	$self->log_debug( 'attempting stopwords extraction from: ' . $data );
 	# words must be greater than 2 characters
-	my ( $word ) = $data =~ /(\w{2,})/uxms;
+	my ( $word ) = $data =~ /(\p{Word}{2,})/xms;
 
 	# log won't like an undef
 	return unless $word;
@@ -74,7 +74,7 @@ around add_file => sub {
 		$set_spell_cmd = sprintf "set_spell_cmd('%s');", $self->spell_cmd;
 	}
 
-	foreach my $holder ( split( /\s/uxms, join( ' ',
+	foreach my $holder ( split( /\s/xms, join( ' ',
 			@{ $self->zilla->authors },
 			$self->zilla->copyright_holder,
 		))
