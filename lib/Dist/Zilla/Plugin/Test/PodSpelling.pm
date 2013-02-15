@@ -14,7 +14,7 @@ with (
 	},
 );
 
-sub mvp_multivalue_args { return qw( stopwords ) }
+sub mvp_multivalue_args { return ( qw( stopwords directories ) ) }
 
 has wordlist => (
 	is      => 'ro',
@@ -37,6 +37,17 @@ has stopwords => (
 		push_stopwords => 'push',
 		uniq_stopwords => 'uniq',
 		no_stopwords   => 'is_empty',
+	}
+);
+
+has directories => (
+	isa     => 'ArrayRef[Str]',
+	traits  => [ 'Array' ],
+	is      => 'ro',
+	default => sub { [] },                   # default to original
+	handles => {
+		no_directories => 'is_empty',
+		print_directories => [ join => ' ' ],
 	}
 );
 
@@ -84,6 +95,7 @@ around add_file => sub {
 		$add_stopwords = 'add_stopwords(<DATA>);';
 		$stopwords = join "\n", '__DATA__', $self->uniq_stopwords;
 	}
+
 	$self->$orig(
 		Dist::Zilla::File::InMemory->new(
 			{   name    => $file->name,
@@ -97,6 +109,7 @@ around add_file => sub {
 						set_spell_cmd => \$set_spell_cmd,
 						add_stopwords => \$add_stopwords,
 						stopwords     => \$stopwords,
+						directories   => \$self->print_directories,
 					},
 				),
 			}
@@ -178,5 +191,5 @@ eval "use Test::Spelling 0.12; use {{ $wordlist }}; 1" or die $@;
 
 {{ $set_spell_cmd }}
 {{ $add_stopwords }}
-all_pod_files_spelling_ok('bin', 'lib');
+all_pod_files_spelling_ok( qw( lib {{ $directories }} ) );
 {{ $stopwords }}
