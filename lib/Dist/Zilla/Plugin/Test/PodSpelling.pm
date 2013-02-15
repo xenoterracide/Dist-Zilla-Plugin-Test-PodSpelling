@@ -51,6 +51,18 @@ has directories => (
 	}
 );
 
+sub add_stopword {
+	my ( $self, $data ) = @_;
+
+	my ( $word ) = $data =~ /(\w{2,})/uxms;
+
+	return unless $word;
+
+	$self->log_debug( 'add stopword: ' . $word );
+
+	$self->push_stopwords( $word );
+}
+
 around add_file => sub {
 	my ($orig, $self, $file) = @_;
 	my ($set_spell_cmd, $add_stopwords, $stopwords);
@@ -59,21 +71,13 @@ around add_file => sub {
 	}
 
 	# automatically add author names to stopwords
-	for (@{ $self->zilla->authors }) {
-		my ( $word ) = $_ =~ /(\w{2,})/uxms;
-		$self->log_debug( 'author name: ' . $word );
-		$self->push_stopwords( $word );
+	foreach my $name (@{ $self->zilla->authors }) {
+		$self->add_stopword( $name );
 	}
 
 	if ( $self->zilla->copyright_holder ) {
-		for ( split( /\s/uxms, $self->zilla->copyright_holder ) ) {
-			my ( $word ) = $_ =~ /(\w{2,})/uxms;
-
-			next unless $word;
-
-			$self->log_debug( 'copyright_holder word: ' . $word );
-
-			$self->push_stopwords( $word );
+		foreach my $holder ( split( /\s/uxms, $self->zilla->copyright_holder ) ) {
+			$self->add_stopword( $holder );
 		}
 	} else {
 		$self->log_debug( 'no copyright_holder found' );
@@ -83,11 +87,8 @@ around add_file => sub {
 		# many of my stopwords are part of a filename
 		$self->log_debug( 'splitting filenames for more words' );
 
-		foreach ( split( '/', $file->name ) ) {
-			my ( $word ) = $_ =~ /(\w+)/xms;
-			$self->log_debug( 'word: ' . $word);
-
-			$self->push_stopwords( $word );
+		foreach my $name ( split( '/', $file->name ) ) {
+			$self->add_stopword( $name );
 		}
 	}
 
