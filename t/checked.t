@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use Test::Tester;
 use Test::More 0.88;
-use Test::Spelling;
+use Test::Spelling 0.17;
 
 use Dist::Zilla::Tester;
 use Path::Class;
@@ -11,8 +11,6 @@ use Cwd ();
 use English '-no_match_vars';
 
 BEGIN {
-  plan skip_all => 'FIXME: This test is broken on win32'
-    if $OSNAME eq 'MSWin32';
   plan skip_all => 'Perl must be in your path for these tests'
     unless qx/perl -e "print 123"/ == 123;
 }
@@ -42,6 +40,16 @@ done_testing;
 # @files should be a file (name) or an array ref of [file, hash-to-override-expected-results]
 sub spell_check_dist {
   my ($dir, @files) = @_;
+
+  # NOTE: windows started throwing stupid permission-denied errors
+  # during File::Temp's tempdir CLEANUP for the xt test that dzil writes
+  # but I have absolutely no idea why and I wasn't able to come up with
+  # a workaround or any useful diagnostics other than the fact that the issue
+  # only occurs within this original process.  As soon as the test is done the file
+  # and directories can be removed using the same (perl) methods.
+  # The tests still count as 'passing' however,
+  # and the dir will likely get cleaned up later, so :-P
+
   my $tzil = Dist::Zilla::Tester->from_config({
     dist_root => dir('corpus', $dir),
   }, {
@@ -68,7 +76,7 @@ sub spell_check_dist {
           # expected test result ('ok' or 'not ok')
           ok => 1,
           # file name
-          name => 'POD spelling for ' . $_->[0],
+          name => 'POD spelling for ' . $_->[0]->as_foreign('Unix'),
           # depth: starts at 1; +1 for do-file; +1 for the all_ func
           depth => 3,
           # overridden expectations (in args to spell_check_dist)
