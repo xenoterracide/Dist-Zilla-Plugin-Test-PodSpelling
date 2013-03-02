@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use Test::Tester;
 use Test::More 0.88;
-use Test::Spelling 0.17;
+use Test::Requires;
 
 use Dist::Zilla::Tester;
 use Path::Class;
@@ -13,6 +13,10 @@ use English '-no_match_vars';
 BEGIN {
   plan skip_all => 'Perl must be in your path for these tests'
     unless qx/perl -e "print 123"/ == 123;
+
+  if ( $OSNAME eq 'MSWin32' ) {
+    test_requires( 'Test::Spelling' => 0.17 );
+  }
 }
 
 # This test uses a custom "spell checker" defined in corpus/*/dist.ini
