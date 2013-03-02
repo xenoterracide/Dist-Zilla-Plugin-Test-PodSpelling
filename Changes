@@ -2,6 +2,9 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.004002  2013-03-01
+	- checked.t should now work on windows if Test::Spelling 0.17+ installed
+
 2.004001  2013-02-14
 	- Add documentation for directories feature
 
