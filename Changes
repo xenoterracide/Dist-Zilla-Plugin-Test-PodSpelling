@@ -2,6 +2,9 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.004003  2013-03-04
+	- fix ::PodSpellingTests version metadata being wrong
+
 2.004002  2013-03-01
 	- checked.t should now work on windows if Test::Spelling 0.17+ installed
 
