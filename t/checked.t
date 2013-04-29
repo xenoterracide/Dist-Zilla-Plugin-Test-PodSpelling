@@ -81,8 +81,8 @@ sub spell_check_dist {
           ok => 1,
           # file name
           name => 'POD spelling for ' . $_->[0]->as_foreign('Unix'),
-          # depth: starts at 1; +1 for do-file; +1 for the all_ func
-          depth => 3,
+          # ignore depth/Level tests, we just want to know that the file was checked
+          depth => undef,
           # overridden expectations (in args to spell_check_dist)
           %{ $_->[1] },
         },
