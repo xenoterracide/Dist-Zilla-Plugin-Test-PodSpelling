@@ -77,6 +77,7 @@ around add_file => sub {
 	foreach my $holder ( split( /\s/xms, join( ' ',
 			@{ $self->zilla->authors },
 			$self->zilla->copyright_holder,
+			@{ $self->zilla->distmeta->{x_contributors} || [] },
 		))
 	) {
 		$self->add_stopword( $holder );
@@ -183,7 +184,8 @@ C<stopwords> can appear multiple times, one word per line.
 Normally no stopwords are added by default, but author names appearing in
 C<dist.ini> are automatically added as stopwords so you don't have to add them
 manually just because they might appear in the C<AUTHORS> section of the
-generated POD document.
+generated POD document. The same goes for contributors listed under the
+'x_contributors' field on your dist's META file.
 
 =begin Pod::Coverage
 
