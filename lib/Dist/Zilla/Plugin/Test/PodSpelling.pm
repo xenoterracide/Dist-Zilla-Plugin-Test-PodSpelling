@@ -77,7 +77,7 @@ around add_file => sub {
 	foreach my $holder ( split( /\s/xms, join( ' ',
 			@{ $self->zilla->authors },
 			$self->zilla->copyright_holder,
-			@{ $self->zilla->distmeta->{x_contributors} },
+			@{ $self->zilla->distmeta->{x_contributors} || [] },
 		))
 	) {
 		$self->add_stopword( $holder );
