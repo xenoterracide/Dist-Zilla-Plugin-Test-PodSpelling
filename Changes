@@ -2,6 +2,9 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.006000  2013-05-01
+	- add contributers to the stopwords list
+
 2.004004  2013-04-29
 	- fix tests broken by Test::Spelling 0.18 which changed Test::Builder
 	  level
