@@ -185,7 +185,7 @@ Normally no stopwords are added by default, but author names appearing in
 C<dist.ini> are automatically added as stopwords so you don't have to add them
 manually just because they might appear in the C<AUTHORS> section of the
 generated POD document. The same goes for contributors listed under the
-'x_contributors' field on your dist's META file.
+'x_contributors' field on your distributions META file.
 
 =begin Pod::Coverage
 
