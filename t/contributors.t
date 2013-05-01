@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 use Test::More 0.88;
+use Test::Requires 'Dist::Zilla::Plugin::Meta::Contributors';
 use Test::DZil;
 
 # test the file content generated gets contributor
