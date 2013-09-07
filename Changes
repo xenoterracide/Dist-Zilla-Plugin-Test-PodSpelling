@@ -2,6 +2,12 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.006001  2013-09-07
+	- stop depending on hanekomu word list. Pod::Wordlist is maintained,
+	  please request words to be added there
+	- remove hack to prevent dzil from adding generated test deps to your dist
+	  that consumes this.
+
 2.006000  2013-05-01
 	- add contributers to the stopwords list
 
