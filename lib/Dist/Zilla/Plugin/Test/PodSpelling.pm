@@ -19,7 +19,7 @@ sub mvp_multivalue_args { return ( qw( stopwords directories ) ) }
 has wordlist => (
 	is      => 'ro',
 	isa     => 'Str',
-	default => 'Pod::Wordlist::hanekomu',    # default to original
+	default => 'Pod::Wordlist',
 );
 
 has spell_cmd => (
@@ -164,7 +164,7 @@ C<bin> and C<lib> are set by default.
 The module name of a word list you wish to use that works with
 L<Test::Spelling>.
 
-Defaults to L<Pod::Wordlist::hanekomu>.
+Defaults to L<Pod::Wordlist>.
 
 =attr spell_cmd
 
