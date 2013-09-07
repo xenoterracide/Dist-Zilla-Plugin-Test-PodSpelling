@@ -77,23 +77,23 @@ v2.0.0    2011-08-06
 	- ownership passes to xenoterracide
 	- Dist Name changed with Module name
 
-1.111520  2011-06-01 14:35:59 Europe/Vienna
+1.111520  2011-06-01
 	- Require Test::Spelling 0.12 in the injected test (thanks doherty for the
 	  suggestion)
 
-1.111480  2011-05-28 23:20:32 Europe/Vienna
+1.111480  2011-05-28
 	- automatically add author names from dist.ini to stopwords (thanks
 	  xenoterracide for the suggestion)
 
-1.103491  2010-12-15 23:06:11 Europe/Vienna
+1.103491  2010-12-15
 
-1.103490  2010-12-15 17:12:06 Europe/Vienna
+1.103490  2010-12-15
 	- added configuration (wordlist, spell_cmd, stopwords) to this plugin
 	  (thanks harleypig)
 
-1.101420  2010-05-22 18:07:04 Europe/Vienna
+1.101420  2010-05-22
 	- removed weaver.ini since that's handled in Dist::Zilla's [@MARCEL] now
 	- list Test::Spelling in dist.ini so we don't use() it anymore
 
-1.100690  2010-03-10 23:23:23 Europe/Vienna
+1.100690  2010-03-10
 	- original version
