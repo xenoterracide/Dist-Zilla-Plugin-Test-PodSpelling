@@ -155,6 +155,10 @@ or:
 	stopwords = stopwords
 	stopwords = wordlist
 
+If you're using C<[ExtraTests]> it must come after C<[Test::PodSpelling]>,
+it's worth noting that this ships in the C<[@Basic]> bundle so you may have to
+remove it from that first.
+
 =head1 DESCRIPTION
 
 This is an extension of L<Dist::Zilla::Plugin::InlineFiles>, providing
