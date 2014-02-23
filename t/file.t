@@ -11,7 +11,11 @@ my $tzil
 		},
 		{
 			add_files => {
-				'source/dist.ini' => simple_ini(['Test::PodSpelling'])
+				'source/lib/Foo.pm' => "package Foo;\n1;\n",
+				'source/dist.ini' => simple_ini(
+					[ GatherDir => ],
+					['Test::PodSpelling']
+				)
 			}
 		},
 	);
