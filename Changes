@@ -2,6 +2,9 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.006005  2014-02-23
+	- Document ExtraTests problem
+
 2.006004  2014-02-23
 	- remove dependency on Path::Class in favor of Path::Tiny
 
