@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+2.006003  2014-02-23
         - prevent distmeta from being populated too early by postponing
           calling it until the file munging phase
 
