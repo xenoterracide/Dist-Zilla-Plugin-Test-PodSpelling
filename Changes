@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+        - prevent distmeta from being populated too early by postponing
+          calling it until the file munging phase
 
 2.006002  2013-12-19
 	- fix problem with compile tests stalling on windows (chorny) GH #20

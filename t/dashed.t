@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use Test::More 0.88;
 use Test::DZil;
+use Path::Tiny;
 
 # test the file content generated when various attributes are set
 
@@ -20,6 +21,7 @@ sub get_content {
     { dist_root => 'corpus/foo' },
     {
       add_files => {
+        'source/lib/Spell/Checked.pm' => "package Spell::Checked;\n1;\n",
         'source/dist.ini' => dist_ini(
           {
             name => 'Spell-Checked',
@@ -29,15 +31,17 @@ sub get_content {
             author => $author,
             copyright_holder => $author,
           },
+          [GatherDir =>],
           [$name => $args],
         )
       }
     }
   );
 
-  my $plugin = $zilla->plugin_named($name);
-  $plugin->gather_files;
-  return $zilla->files->[0]->content;
+  $zilla->build;
+  my $build_dir = $zilla->tempdir->subdir('build');
+  my $file = path($build_dir, 'xt', 'author', 'pod-spell.t');
+  return $file->slurp_utf8;
 }
 
 my $content = get_content({});
