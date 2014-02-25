@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
+use utf8;
 use Test::More 0.88;
 use Test::DZil;
 use Path::Tiny;
