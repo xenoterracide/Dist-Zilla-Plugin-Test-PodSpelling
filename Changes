@@ -2,6 +2,10 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
 
+2.006006  2014-02-27
+	- require Dist::Zilla 5
+	  Unicode Changes + 2.6.3 changes means tests only work on dzil 5+
+
 2.006005  2014-02-23
 	- Document ExtraTests problem
 
