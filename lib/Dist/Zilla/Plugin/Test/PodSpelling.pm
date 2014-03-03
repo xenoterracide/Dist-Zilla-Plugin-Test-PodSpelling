@@ -8,7 +8,6 @@ use warnings;
 use Moose;
 extends 'Dist::Zilla::Plugin::InlineFiles';
 with (
-	'Dist::Zilla::Role::FileMunger',
 	'Dist::Zilla::Role::TextTemplate',
 	'Dist::Zilla::Role::FileFinderUser' => {
 		default_finders => [ ':InstallModules' ],
@@ -68,22 +67,20 @@ sub add_stopword {
 	return;
 }
 
-sub munge_files {
-	my ($self) = @_;
+around merged_section_data => sub {
+	my $orig = shift;
+	my $self = shift;
 
-	my $data = $self->merged_section_data;
-	return unless $data and %$data;
+	my $data = $self->$orig(@_);
 
-	for my $file (@{ $self->zilla->files }) {
-		next unless exists $data->{$file->name};
+	my $filename = 'xt/author/pod-spell.t';
+	$data->{$filename} = \($self->_munge_content( ${ $data->{$filename} } ));
 
-		$self->munge_file($file);
-	}
-	return;
-}
+	return $data;
+};
 
-sub munge_file {
-	my ($self, $file) = @_;
+sub _munge_content {
+	my ($self, $content) = @_;
 
 	my ($set_spell_cmd, $add_stopwords, $stopwords);
 	if ($self->spell_cmd) {
@@ -113,23 +110,19 @@ sub munge_file {
 		$stopwords = join "\n", '__DATA__', $self->uniq_stopwords;
 	}
 
-	$file->content(
-		$self->fill_in_string(
-			$file->content,
-			{
-				name          => __PACKAGE__,
-				version       => __PACKAGE__->VERSION
-					|| 'bootstrapped version',
-				wordlist      => \$self->wordlist,
-				set_spell_cmd => \$set_spell_cmd,
-				add_stopwords => \$add_stopwords,
-				stopwords     => \$stopwords,
-				directories   => \$self->print_directories,
-			}
-		),
+	return $self->fill_in_string(
+		$content,
+		{
+			name          => __PACKAGE__,
+			version       => __PACKAGE__->VERSION
+				|| 'bootstrapped version',
+			wordlist      => \$self->wordlist,
+			set_spell_cmd => \$set_spell_cmd,
+			add_stopwords => \$add_stopwords,
+			stopwords     => \$stopwords,
+			directories   => \$self->print_directories,
+		}
 	);
-
-	return;
 }
 
 __PACKAGE__->meta->make_immutable;
