@@ -52,6 +52,31 @@ has directories => (
 	}
 );
 
+has _files => (
+	is      => 'rw',
+	isa     => 'ArrayRef[Dist::Zilla::Role::File]',
+);
+
+sub gather_files {
+	my ($self) = @_;
+
+	my $data = $self->merged_section_data;
+	return unless $data and %$data;
+
+	my @files;
+	for my $name (keys %$data) {
+		my $file = Dist::Zilla::File::InMemory->new({
+			name    => $name,
+			content => ${ $data->{$name} },
+		});
+		$self->add_file($file);
+		push @files, $file;
+	}
+
+	$self->_files(\@files);
+	return;
+}
+
 sub add_stopword {
 	my ( $self, $data ) = @_;
 
@@ -71,14 +96,7 @@ sub add_stopword {
 sub munge_files {
 	my ($self) = @_;
 
-	my $data = $self->merged_section_data;
-	return unless $data and %$data;
-
-	for my $file (@{ $self->zilla->files }) {
-		next unless exists $data->{$file->name};
-
-		$self->munge_file($file);
-	}
+	$self->munge_file($_) foreach @{ $self->_files };
 	return;
 }
 
