@@ -1,6 +1,7 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+	- warn when [ExtraTests] renamed the file before we munged it
 
 2.006006  2014-02-27
 	- require Dist::Zilla 5
@@ -13,8 +14,8 @@ Revision history for Perl extension {{$dist->name}}
 	- remove dependency on Path::Class in favor of Path::Tiny
 
 2.006003  2014-02-23
-        - prevent distmeta from being populated too early by postponing
-          calling it until the file munging phase
+	- prevent distmeta from being populated too early by postponing
+	  calling it until the file munging phase
 
 2.006002  2013-12-19
 	- fix problem with compile tests stalling on windows (chorny) GH #20
