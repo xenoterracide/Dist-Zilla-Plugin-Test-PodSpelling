@@ -74,11 +74,16 @@ sub munge_files {
 	my $data = $self->merged_section_data;
 	return unless $data and %$data;
 
+	my @found_files;
 	for my $file (@{ $self->zilla->files }) {
 		next unless exists $data->{$file->name};
 
 		$self->munge_file($file);
+		push @found_files, $file;
 	}
+
+	$self->log('failed to find ' . (keys %$data)[0] . ' - did something rename or remove it?')
+		unless @found_files;
 	return;
 }
 
