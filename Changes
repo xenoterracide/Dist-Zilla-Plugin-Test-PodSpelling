@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+2.006007  2014-03-05
 	- munge the file properly even if [ExtraTests] has already moved it
 
 2.006006  2014-02-27
