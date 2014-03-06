@@ -16,6 +16,7 @@ my $tzil
 				'source/dist.ini' => simple_ini(
 					[ GatherDir => ],
 					[ MakeMaker => ],
+					[ ExtraTests => ],
 					['Test::PodSpelling']
 				)
 			}
@@ -28,9 +29,8 @@ my $fn
 	= $tzil
 	->tempdir
 	->subdir('build')
-	->subdir('xt')
-	->subdir('author')
-	->file('pod-spell.t')
+	->subdir('t')
+	->file('author-pod-spell.t')
 	;
 
 ok ( -e $fn, 'test file exists');

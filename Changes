@@ -1,6 +1,7 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+	- munge the file properly even if [ExtraTests] has already moved it
 
 2.006006  2014-02-27
 	- require Dist::Zilla 5
