@@ -156,6 +156,8 @@ no Moose;
 
 # ABSTRACT: Author tests for POD spelling
 
+=for Pod::Coverage gather_files
+
 =head1 SYNOPSIS
 
 In C<dist.ini>:
