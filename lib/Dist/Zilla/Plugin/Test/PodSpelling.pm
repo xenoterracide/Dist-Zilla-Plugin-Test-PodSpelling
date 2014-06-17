@@ -199,6 +199,8 @@ the following file:
 
   xt/author/pod-spell.t - a standard Test::Spelling test
 
+L<Test::Spelling> will be added as a develop prerequisite.
+
 =method add_stopword
 
 Called to add stopwords to the stopwords array. It is used to determine if
@@ -243,6 +245,7 @@ generated POD document. The same goes for contributors listed under the
 mvp_multivalue_args
 munge_files
 munge_file
+register_prereqs
 
 =end Pod::Coverage
 
