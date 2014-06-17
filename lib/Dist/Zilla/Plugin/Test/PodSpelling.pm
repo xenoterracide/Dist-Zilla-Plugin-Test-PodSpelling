@@ -13,6 +13,7 @@ with (
 	'Dist::Zilla::Role::FileFinderUser' => {
 		default_finders => [ ':InstallModules' ],
 	},
+	'Dist::Zilla::Role::PrereqSource',
 );
 
 sub mvp_multivalue_args { return ( qw( stopwords directories ) ) }
@@ -147,6 +148,18 @@ sub munge_file {
 		),
 	);
 
+	return;
+}
+
+sub register_prereqs {
+	my $self = shift;
+	$self->zilla->register_prereqs(
+		{
+			type  => 'requires',
+			phase => 'develop',
+		},
+		'Test::Spelling' => '0.12',
+	);
 	return;
 }
 
